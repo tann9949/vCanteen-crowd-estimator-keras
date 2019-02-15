@@ -29,10 +29,10 @@ Prerequisites include:
 The input file and the output density map is as following:
 
 **INPUT**<br>
-Actual = 146
+Actual = 146<br>
 <img src="/icanteen_img/test_5.jpg" width="350">
 
 **OUTPUT**<br>
-Prediction = 158
+Prediction = 158<br>
 <img src="/icanteen_heat/heat_test_5.png" width="350">
 
