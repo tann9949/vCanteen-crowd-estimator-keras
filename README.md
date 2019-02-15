@@ -1,6 +1,6 @@
-# vCanteen-crowd-estimator (Unofficial)
+# vCanteen-crowd-estimator
 
-An implementation of CVPR2016 paper [Single-Image Crowd Counting via Multi-Column Convolutional Neural Network](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Zhang_Single-Image_Crowd_Counting_CVPR_2016_paper.pdf)
+An **unofficial** implementation of CVPR2016 paper [Single-Image Crowd Counting via Multi-Column Convolutional Neural Network](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Zhang_Single-Image_Crowd_Counting_CVPR_2016_paper.pdf)
 
 This code use the pre-trained weight from this [github](https://github.com/uestcchicken/crowd-counting-MCNN)
 
@@ -12,7 +12,7 @@ We use Keras as an implementation **ONLY**
 3. Clone this repository. `git clone https://github.com/tann9949/vCanteen-crowd-estimator.git`
 
 ## Predicting headcount with your images
-1. Launch jupyter notebook and open `Crowd Count MCNN_icanteen.ipynb`
+1. Launch jupyter notebook and open `Crowd Count MCNN_icanteen.ipynb`.
 2. **Change the `img_path` of every cell to be the PATH to your images.**
 3. **Change the `name` of the loaded image (see the line with `cv2.imread`).**
 4. Enjoy estimating the crowd.
@@ -20,7 +20,17 @@ We use Keras as an implementation **ONLY**
 ## Other note
 It is recommended to read the paper before try using this code to guarantee an understanding of the topics.
 Prerequisites include: 
-- Neural network
-- Convolutional Neural Network
-- Keras
+- Neural network.
+- Convolutional Neural Network.
+- Keras.
 - Python Programming.
+
+## Example
+The input file and the output density map is as following:
+
+**INPUT**
+![test_1](/icanteen_img/test_1.jpg)
+
+**OUTPUT**
+![heatmap_test_1](/canteen_heat/heat_test_1.png)
+
