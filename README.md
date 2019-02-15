@@ -32,5 +32,5 @@ The input file and the output density map is as following:
 ![test_1](/icanteen_img/test_1.jpg)
 
 **OUTPUT**
-![heatmap_test_1](/canteen_heat/heat_test_1.png)
+![heatmap_test_1](/icanteen_heat/heat_test_1.png)
 
