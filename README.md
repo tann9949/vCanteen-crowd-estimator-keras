@@ -28,9 +28,9 @@ Prerequisites include:
 ## Example
 The input file and the output density map is as following:
 
-**INPUT**
+**INPUT**<br>
 ![test_1](/icanteen_img/test_1.jpg)
 
-**OUTPUT**
+**OUTPUT**<br>
 ![heatmap_test_1](/icanteen_heat/heat_test_1.png)
 
