@@ -7,9 +7,22 @@ This code use the pre-trained weight from this [github](https://github.com/uestc
 We use Keras as an implementation **ONLY**
 
 ## Installation
-1. Install Keras. `pip install keras`  or `pip3 install keras`.
-2. Install Jupyter. `pip install jupyter`
-3. Clone this repository. `git clone https://github.com/tann9949/vCanteen-crowd-estimator.git`
+1. Install Keras. 
+```sh
+pip install keras
+```
+or
+```sh
+pip3 install keras
+```
+2. Install Jupyter. 
+```sh
+pip install jupyter
+```
+3. Clone this repository. 
+```
+git clone https://github.com/tann9949/vCanteen-crowd-estimator.git
+```
 
 ## Predicting headcount with your images
 1. Launch jupyter notebook and open `Crowd Count MCNN_icanteen.ipynb`.
