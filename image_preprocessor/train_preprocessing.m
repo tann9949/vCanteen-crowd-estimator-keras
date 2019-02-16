@@ -1,15 +1,16 @@
 clc; clear all;
 seed = 95461354;
 rng(seed)
+N = 9;
 
 dataset_name = ['icanteen_patches'];
-path = ['data/original/images'];
+path = ['data/original/images/'];
 output_path = 'data/formatted_trainval/';
 train_path_img = strcat(output_path, dataset_name,'/train/');
 train_path_den = strcat(output_path, dataset_name,'/train_den/');
 val_path_img = strcat(output_path, dataset_name,'/val/');
 val_path_den = strcat(output_path, dataset_name,'/val_den/');
-gt_path = ['data/original/ground_truth'];
+gt_path = ['data/original/ground_truth/'];
 
 mkdir(output_path)
 mkdir(train_path_img);
