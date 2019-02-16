@@ -2,7 +2,9 @@
 
 An **unofficial** implementation of CVPR2016 paper [Single-Image Crowd Counting via Multi-Column Convolutional Neural Network](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Zhang_Single-Image_Crowd_Counting_CVPR_2016_paper.pdf)
 
-This code use the pre-trained weight from this [github](https://github.com/uestcchicken/crowd-counting-MCNN)
+My source for the files `train_preprocessing.m`, `get_density_map_gaussian.m`  and `weight.h5` are from [uestcchicken](https://github.com/uestcchicken). This is the link to his [github](https://github.com/uestcchicken/crowd-counting-MCNN) about the implementation of this paper too.
+
+I wholeheartly thank him for his contribution. Without him(or her) this project wouldn't be complete.
 
 We use Keras as an implementation **ONLY**
 

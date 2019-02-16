@@ -9,7 +9,7 @@ num_images = 25;
 for idx = 1:num_images
     figure;
     index = num2str(idx);
-    img_name = ['test_' index];
+    img_name = ['IMG_' index];
     img = strcat(path,img_name,'.jpg');
     imshow(img);
     [x,y] = getpts;
