@@ -17,6 +17,17 @@ We use Keras as an implementation **ONLY**
 3. **Change the `name` of the loaded image (see the line with `cv2.imread`).**
 4. Enjoy estimating the crowd.
 
+## Label your own crowd dataset
+1. Launch `image_preprocessor/Head_Labeler.m` with Matlab.
+2. Change `num_images`, `img_path` and `img_name` to match with your dataset.
+3. Run `Head_Labeler.m`
+4. Mark the head on your images by clicking on the head (one point per head is enough).
+5. To exit, close the figure.
+
+### Note for labeling with `getpts`
+1. To delete the latest label, press `backspace`.
+2. To finish labeling, press `return`.
+
 ## Other note
 It is recommended to read the paper before try using this code to guarantee an understanding of the topics.
 Prerequisites include: 
