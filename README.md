@@ -9,15 +9,11 @@ We use Keras as an implementation **ONLY**
 ## Installation
 1. Install Keras. 
 ```sh
-pip install keras
-```
-or
-```sh
 pip3 install keras
 ```
 2. Install Jupyter. 
 ```sh
-pip install jupyter
+pip3 install jupyter
 ```
 3. Clone this repository. 
 ```
