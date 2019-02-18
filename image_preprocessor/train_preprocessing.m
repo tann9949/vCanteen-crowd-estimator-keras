@@ -18,7 +18,7 @@ mkdir(train_path_den);
 mkdir(val_path_img);
 mkdir(val_path_den);
 
-num_images = 25;
+num_images = 30;
 num_val = ceil(num_images*0.1);
 indices = randperm(num_images);
 
