@@ -52,9 +52,9 @@ The input file and the output density map is as following:
 
 **INPUT**<br>
 Actual = 117<br>
-<img src="/icanteen_img/test_7.jpg" width="350">
+<img src="/icanteen_img/test/IMG_33.jpg" width="350">
 
 **OUTPUT**<br>
 Prediction = 115<br>
-<img src="/icanteen_heat/heat_test_7.png" width="350">
+<img src="/icanteen_heat/heat_test_3.png" width="350">
 
