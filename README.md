@@ -9,9 +9,10 @@ I wholeheartly thank him for his contribution. Without him(or her) this project 
 We use Keras as an implementation **ONLY**
 
 ## Installation
-1. Install Keras. 
+1. Install Keras, Tensorflow. 
 ```sh
 pip3 install keras
+pip3 install tensorflow
 ```
 2. Install Jupyter. 
 ```sh
@@ -24,7 +25,7 @@ git clone https://github.com/tann9949/vCanteen-crowd-estimator.git
 
 ## To launch it on your camera
 1. In `vCanteen.py`, line 141, delete argument `videopath`.
-Run this command on your terminal/command prompt
+2. Run this command on your terminal/command prompt
 ```
 python3 vcanteen.py
 ```
@@ -32,6 +33,10 @@ python3 vcanteen.py
 ## To launch it on your video file
 1. Add your video to `icanteen_video` directory.
 2. In `vCanteen.py`, change the `videopath` variable (line 140) as your video.
+3. Run this command on your terminal/command prompt
+```
+python3 vcanteen.py
+```
 
 ## Predicting headcount with your images
 1. Launch jupyter notebook and open `Crowd Count MCNN_icanteen.ipynb`.
@@ -58,14 +63,18 @@ Prerequisites include:
 - Keras.
 - Python Programming.
 
+## Authors
+- **Chompakorn Chaksangchaichot** (5931229821)
+- **Peeramit Masana** (5931316721)
+- **Akekamon Boonsith** (5931393021)
+
 ## Example
 The input file and the output density map is as following:
 
 **INPUT**<br>
-Actual = 117<br>
-<img src="/icanteen_img/test/images/IMG_38.jpg" width="350">
+Actual = 209<br>
+<img src="/icanteen_img/test/images/IMG_37.jpg" width="350">
 
 **OUTPUT**<br>
-Prediction = 115<br>
-<img src="/icanteen_heat/heat_IMG_38.png" width="350">
-
+Prediction = 205<br>
+<img src="/icanteen_heat/heat_IMG_37.png" width="350">
