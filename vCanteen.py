@@ -137,7 +137,7 @@ if __name__ == "__main__":
     mcnn = models.Sequential()
     mcnn.add(model)
     mcnn.load_weights('keras_weight/trained.h5')
-    videopath = 'icanteen_vid/TEST_2.mp4'
+    videopath = 'icanteen_vid/TEST_1.mp4'
     run(mcnn, videopath)
 
 
