@@ -22,6 +22,17 @@ pip3 install jupyter
 git clone https://github.com/tann9949/vCanteen-crowd-estimator.git
 ```
 
+## To launch it on your camera
+1. In `vCanteen.py`, line 141, delete argument `videopath`.
+Run this command on your terminal/command prompt
+```
+python3 vcanteen.py
+```
+
+## To launch it on your video file
+1. Add your video to `icanteen_video` directory.
+2. In `vCanteen.py`, change the `videopath` variable (line 140) as your video.
+
 ## Predicting headcount with your images
 1. Launch jupyter notebook and open `Crowd Count MCNN_icanteen.ipynb`.
 2. **Change the `img_path` of every cell to be the PATH to your images.**
@@ -56,5 +67,5 @@ Actual = 117<br>
 
 **OUTPUT**<br>
 Prediction = 115<br>
-<img src="/icanteen_heat/heat_test_3.png" width="350">
+<img src="/icanteen_heat/heat_IMG_38.png" width="350">
 

@@ -57,38 +57,51 @@ def get_MCNN():
                   
     return model
 
-def run(model):
+def run(model, videopath = 0):
     font = cv2.FONT_HERSHEY_SIMPLEX
     output_text = ''
     sec = 5
     cv2.namedWindow("Camera")
     img_counter = 0
+    text_color = (0,255,0)
+    current_dt = datetime.datetime.now()
     
-    cam = cv2.VideoCapture(0)
+    cam = cv2.VideoCapture(videopath)
     ret, frame = cam.read()
     cv2.imshow("Camera", frame)
+    gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
+    gray = (gray - 127.5) / 128
+    inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
+    pred = round(np.sum(model.predict(inputs)))
+    curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
+    output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
+    print(output_text)
+#    send_JSON(pred, curr_time)
+    cv2.rectangle(frame, (10,10), (800, 20),(0,0,0),-1)
+    cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
+    cv2.imshow("Camera", frame)
+
     t_end = round(int(time.time() + sec))
     while cam.isOpened():
         ret, frame = cam.read()
         gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
-#        cv2.imshow("Camera", frame)
-        cv2.putText(frame, output_text, (10,30), font, 0.5, (0,255,0), 1, cv2.LINE_AA)
+        gray = (gray - 127.5) / 128
+        cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
+        cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
         cv2.imshow("Camera", frame)
 
         key = cv2.waitKey(1)
         
         if round(int(time.time())) == t_end:
             current_dt = datetime.datetime.now()
-#            img_name = str(current_dt)+'.png'
-#            cv2.imwrite(img_name, frame)
             inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
             pred = round(np.sum(model.predict(inputs)))
-#            print("{} is written!".format(img_name))
             curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
             output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
             print(output_text)
-            send_JSON(pred, curr_time)
-            cv2.putText(frame, output_text, (10,30), font, 0.5, (0,255,0), 1, cv2.LINE_AA)
+#            send_JSON(pred, curr_time)
+            cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
+            cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
             cv2.imshow("Camera", frame)
             t_end = round(int(time.time() + sec))
         
@@ -98,17 +111,15 @@ def run(model):
         
         elif key % 256 == 32:
             # SPACE pressed
-#            img_name = "VCanteen_{}.png".format(img_counter)
-#            cv2.imwrite(img_name, frame)
             inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
             pred = round(np.sum(model.predict(inputs)))
-#            print("{} written!".format(img_name))
             current_dt = datetime.datetime.now()
             curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
             output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
             print(output_text)
-            send_JSON(pred, curr_time)
-            cv2.putText(frame, output_text, (10,30), font, 0.5, (0,255,0), 1, cv2.LINE_AA)
+#            send_JSON(pred, curr_time)
+            cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
+            cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
             cv2.imshow("Camera", frame)
             img_counter += 1
 
@@ -126,7 +137,8 @@ if __name__ == "__main__":
     mcnn = models.Sequential()
     mcnn.add(model)
     mcnn.load_weights('keras_weight/trained.h5')
-    run(mcnn)
+    videopath = 'icanteen_vid/TEST_1.mp4'
+    run(mcnn, videopath)
 
 
 
