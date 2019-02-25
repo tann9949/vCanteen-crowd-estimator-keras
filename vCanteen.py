@@ -121,7 +121,6 @@ def run(model, videopath = 0):
             cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
             cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
             cv2.imshow("Camera", frame)
-            img_counter += 1
 
 
     cam.release()
@@ -137,7 +136,7 @@ if __name__ == "__main__":
     mcnn = models.Sequential()
     mcnn.add(model)
     mcnn.load_weights('keras_weight/trained.h5')
-    videopath = 'icanteen_vid/TEST_1.mp4'
+    videopath = 'icanteen_vid/TEST_3.mp4'
     run(mcnn, videopath)
 
 
