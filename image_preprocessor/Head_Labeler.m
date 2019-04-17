@@ -1,6 +1,6 @@
 clc; clear all;
 
-
+% data/original/ground_truth/
 path = ['data/original/images/'];
 gt_path = 'data/original/ground_truth/';
 
