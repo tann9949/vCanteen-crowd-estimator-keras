@@ -4,13 +4,14 @@ clc; clear all;
 path = ['data/original/images/'];
 gt_path = 'data/original/ground_truth/';
 
-num_images = 30;
+num_images = 50;
 
-for idx = 8:num_images
+for idx = 47:num_images
     figure;
     index = num2str(idx);
     img_name = ['IMG_' index];
     img = strcat(path,img_name,'.jpg');
+    disp(img);
     imshow(img);
     [x,y] = getpts;
     
