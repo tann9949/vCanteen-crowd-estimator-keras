@@ -62,7 +62,7 @@ def run(model, videopath = 0):
     
     cam = cv2.VideoCapture(videopath)
     ret, frame = cam.read()
-    cv2.imshow("Camera", frame)
+    # cv2.imshow("Camera", frame)
     gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
     gray = (gray - 127.5) / 128
     inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
@@ -71,9 +71,9 @@ def run(model, videopath = 0):
     output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
     print(output_text)
 #    send_JSON(pred, curr_time)
-    cv2.rectangle(frame, (10,10), (800, 20),(0,0,0),-1)
-    cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
-    cv2.imshow("Camera", frame)
+    # cv2.rectangle(frame, (10,10), (800, 20),(0,0,0),-1)
+    # cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
+    # cv2.imshow("Camera", frame)
 
     t_end = round(int(time.time() + sec))
     while cam.isOpened():
