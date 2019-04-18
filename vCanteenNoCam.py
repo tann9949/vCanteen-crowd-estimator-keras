@@ -59,7 +59,7 @@ def get_MCNN():
 
 def run(model, videopath = 0):
     current_dt = datetime.datetime.now()
-    
+    sec = 5
     cam = cv2.VideoCapture(videopath)
     ret, frame = cam.read()
     # cv2.imshow("Camera", frame)
