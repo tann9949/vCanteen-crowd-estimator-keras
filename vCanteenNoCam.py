@@ -59,7 +59,10 @@ def get_MCNN():
 
 def run(model, videopath = 0):
     current_dt = datetime.datetime.now()
-
+    
+    cam = cv2.VideoCapture(videopath)
+    ret, frame = cam.read()
+    cv2.imshow("Camera", frame)
     gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
     gray = (gray - 127.5) / 128
     inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
@@ -73,41 +76,41 @@ def run(model, videopath = 0):
     cv2.imshow("Camera", frame)
 
     t_end = round(int(time.time() + sec))
-#     while cam.isOpened():
-#         ret, frame = cam.read()
-#         gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
-#         gray = (gray - 127.5) / 128
+    while cam.isOpened():
+        ret, frame = cam.read()
+        gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
+        gray = (gray - 127.5) / 128
 #         cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
 #         cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
 #         cv2.imshow("Camera", frame)
 
-#         key = cv2.waitKey(1)
+        key = cv2.waitKey(1)
         
-#         if round(int(time.time())) == t_end:
-#             current_dt = datetime.datetime.now()
-#             inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
-#             pred = round(np.sum(model.predict(inputs)))
-#             curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
-#             output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
-#             print(output_text)
-# #            send_JSON(pred, curr_time)
+        if round(int(time.time())) == t_end:
+            current_dt = datetime.datetime.now()
+            inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
+            pred = round(np.sum(model.predict(inputs)))
+            curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
+            output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
+            print(output_text)
+#             send_JSON(pred, curr_time)
 #             cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
 #             cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
 #             cv2.imshow("Camera", frame)
-#             t_end = round(int(time.time() + sec))
+            t_end = round(int(time.time() + sec))
         
-#         if key & 0xFF == ord('q'):
-#             print("Closing the window")
-#             break
+        if key & 0xFF == ord('q'):
+            print("Closing the window")
+            break
         
-#         elif key % 256 == 32:
-#             # SPACE pressed
-#             inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
-#             pred = round(np.sum(model.predict(inputs)))
-#             current_dt = datetime.datetime.now()
-#             curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
-#             output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
-#             print(output_text)
+        elif key % 256 == 32:
+            # SPACE pressed
+            inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
+            pred = round(np.sum(model.predict(inputs)))
+            current_dt = datetime.datetime.now()
+            curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
+            output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
+            print(output_text)
 # #            send_JSON(pred, curr_time)
 #             cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
 #             cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
