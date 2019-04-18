@@ -128,16 +128,9 @@ def run(model, videopath = 0):
 
 if __name__ == "__main__":
     model = get_MCNN()
-    model.load_weights('keras_weight/weights.h5')
-
-    for layer in model.layers[:-2]:
-        layer.trainable = False
-
-    mcnn = models.Sequential()
-    mcnn.add(model)
-    mcnn.load_weights('keras_weight/trained.h5')
+    model.load_weights('keras_weight/trained_v2.h5')
     videopath = 'icanteen_vid/TEST_3.mp4'
-    run(mcnn, videopath)
+    run(model, videopath)
 
 
 
