@@ -4,9 +4,10 @@ clc; clear all;
 path = ['data/original/images/'];
 gt_path = 'data/original/ground_truth/';
 
-num_images = 50;
+num_start = 51;
+num_images = 51;
 
-for idx = 47:num_images
+for idx = sum_start:num_images
     figure;
     index = num2str(idx);
     img_name = ['IMG_' index];
