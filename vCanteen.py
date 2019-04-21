@@ -11,14 +11,17 @@ import math
 from keras import models
 import requests
 
+
+MAX_COUNT = 240
+URL = 'https://en04r5not39z8i.x.pipedream.net/'
+
 def send_JSON(pred, time):
-    db_path = 'https://enidwk62vn7d.x.pipedream.net/'
     data = {
-        'time_stamp': time,
-        'crowd_size': pred
+        'created_at': time,
+        'percent_density': pred
     }
     
-    r = requests.post(db_path, data=data)
+    r = requests.post(URL, data=data)
 
 def get_MCNN():
     input1 = Input(shape=(None, None, 1))
@@ -57,38 +60,39 @@ def get_MCNN():
                   
     return model
 
+
 def run(model, videopath = 0):
     font = cv2.FONT_HERSHEY_SIMPLEX
     output_text = ''
     sec = 5
-    cv2.namedWindow("Camera")
     img_counter = 0
     text_color = (0,255,0)
     current_dt = datetime.datetime.now()
     
     cam = cv2.VideoCapture(videopath)
     ret, frame = cam.read()
-    cv2.imshow("Camera", frame)
+    # cv2.imshow("Camera", frame)
     gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
     gray = (gray - 127.5) / 128
     inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
     pred = round(np.sum(model.predict(inputs)))
     curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
-    output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
+    percent_den = int(pred*100/MAX_COUNT)
+    output_text = str(curr_time)+ ' >> PRED : '+str(percent_den)+' %'
     print(output_text)
-#    send_JSON(pred, curr_time)
-    cv2.rectangle(frame, (10,10), (800, 20),(0,0,0),-1)
-    cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
-    cv2.imshow("Camera", frame)
+    send_JSON(percent_den, curr_time)
+    # cv2.rectangle(frame, (10,10), (800, 20),(0,0,0),-1)
+    # cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
+    # cv2.imshow("Camera", frame)
 
     t_end = round(int(time.time() + sec))
     while cam.isOpened():
         ret, frame = cam.read()
         gray = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY )
         gray = (gray - 127.5) / 128
-        cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
-        cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
-        cv2.imshow("Camera", frame)
+        # cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
+        # cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
+        # cv2.imshow("Camera", frame)
 
         key = cv2.waitKey(1)
         
@@ -97,12 +101,13 @@ def run(model, videopath = 0):
             inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
             pred = round(np.sum(model.predict(inputs)))
             curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
-            output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
+            percent_den = int(pred*100/MAX_COUNT)
+            output_text = str(curr_time)+ ' >> PRED : '+str(percent_den)+' %'
             print(output_text)
-#            send_JSON(pred, curr_time)
-            cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
-            cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
-            cv2.imshow("Camera", frame)
+            send_JSON(percent_den, curr_time)
+            # cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
+            # cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
+            # cv2.imshow("Camera", frame)
             t_end = round(int(time.time() + sec))
         
         if key & 0xFF == ord('q'):
@@ -114,13 +119,14 @@ def run(model, videopath = 0):
             inputs = np.reshape(gray, [1, gray.shape[0], gray.shape[1], 1])
             pred = round(np.sum(model.predict(inputs)))
             current_dt = datetime.datetime.now()
+            percent_den = int(pred*100/MAX_COUNT)
             curr_time = current_dt.strftime('%Y-%m-%d %H:%M:%S')
-            output_text = str(curr_time)+ ' >> PRED : '+str(pred)+' people'
+            output_text = str(curr_time)+ ' >> PRED : '+str(percent_den)+' %'
             print(output_text)
-#            send_JSON(pred, curr_time)
-            cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
-            cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
-            cv2.imshow("Camera", frame)
+            send_JSON(percent_den, curr_time)
+            # cv2.rectangle(frame, (10,15), (400, 35),(0,0,0),-1)
+            # cv2.putText(frame, output_text, (10,30), font, 0.5, text_color, 1, cv2.LINE_AA)
+            # cv2.imshow("Camera", frame)
 
 
     cam.release()
