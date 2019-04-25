@@ -18,11 +18,12 @@ mkdir(train_path_den);
 mkdir(val_path_img);
 mkdir(val_path_den);
 
-num_images = 30;
+num_start = 31;
+num_images = 100;
 num_val = ceil(num_images*0.1);
-indices = randperm(num_images);
+indices = randperm((num_images-num_start)+1)+30;
 
-for idx = 1:num_images
+for idx = 1:(num_images-num_start)+1
     i = indices(idx);
     if (mod(idx,10)==0)
         fprintf(1,'Processing %3d/%d files\n', idx, num_images);

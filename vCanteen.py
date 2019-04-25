@@ -12,16 +12,18 @@ from keras import models
 import requests
 
 
+
 MAX_COUNT = 240
-URL = 'https://en04r5not39z8i.x.pipedream.net/'
+# URL = 'https://en04r5not39z8i.x.pipedream.net/'
+URL = 'https://vcanteen.herokuapp.com/v2/crowd-estimation/prediction'
 
 def send_JSON(pred, time):
     data = {
         'created_at': time,
         'percent_density': pred
     }
-    
-    r = requests.post(URL, data=data)
+    r = requests.post(URL, json=data)
+    return r.status_code
 
 def get_MCNN():
     input1 = Input(shape=(None, None, 1))
