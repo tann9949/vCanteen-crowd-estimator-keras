@@ -19,14 +19,14 @@ mkdir(val_path_img);
 mkdir(val_path_den);
 
 num_start = 31;
-num_images = 100;
+num_images = 160;
 num_val = ceil(num_images*0.1);
 indices = randperm((num_images-num_start)+1)+30;
 
 for idx = 1:(num_images-num_start)+1
     i = indices(idx);
     if (mod(idx,10)==0)
-        fprintf(1,'Processing %3d/%d files\n', idx, num_images);
+        fprintf(1,'Processing %3d/%d files\n', idx, (num_images-num_start)+1);
     end
     load(strcat(gt_path, 'GT_IMG_',num2str(i),'.mat')) ;
     input_img_name = strcat(path,'IMG_',num2str(i),'.jpg');
