@@ -67,4 +67,3 @@ Prerequisites include:
 - **Chompakorn Chaksangchaichot** (5931229821)
 - **Peeramit Masana** (5931316721)
 - **Akekamon Boonsith** (5931393021)
-<img src="/icanteen_heat/heat_IMG_37.png" width="350">
