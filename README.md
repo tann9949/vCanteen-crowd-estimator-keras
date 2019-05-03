@@ -67,14 +67,4 @@ Prerequisites include:
 - **Chompakorn Chaksangchaichot** (5931229821)
 - **Peeramit Masana** (5931316721)
 - **Akekamon Boonsith** (5931393021)
-
-## Example
-The input file and the output density map is as following:
-
-**INPUT**<br>
-Actual = 209<br>
-<img src="/icanteen_img/test/images/IMG_37.jpg" width="350">
-
-**OUTPUT**<br>
-Prediction = 205<br>
 <img src="/icanteen_heat/heat_IMG_37.png" width="350">
